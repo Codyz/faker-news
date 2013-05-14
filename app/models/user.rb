@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
 
   #validates :emails, numericality: {greater_than: 0}
   validates :password, :password_confirmation, presence: true
+  validates :name, :uniqueness => true
 end
