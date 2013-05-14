@@ -1,0 +1,12 @@
+<ul>
+  <% parent.comments.each do |baby_comment| %>
+  <li>
+
+    <% parent_link = comment_url(baby_comment.comment_id) %>
+    <%= render :partial => "comment_display", locals: {comment: baby_comment, destination: parent_link, anchor_text: "parent" }%>
+    <br><br>
+    <%= render :partial => "all_children", locals: {parent: baby_comment} if baby_comment.comments %>
+
+  </li>
+  <% end %>
+</ul>

@@ -8,19 +8,6 @@
 
 <%= render :partial => "comment_show_form", locals: {new_comment: @new_comment, comment: @comment}%>
 
-<ul>
-  <% @comment.comments.each do |baby_comment| %>
-  <li>
-
-    <% parent_link = comment_url(baby_comment.comment_id) %>
-
-    <%= render :partial => "comment_display", locals: {comment: baby_comment, destination: parent_link, anchor_text: "parent" }%>
-    <br><br>
-
-  </li>
-  <% end %>
-</ul>
-
-
+<%= render :partial => "all_children", locals: {parent: @comment}%>
 
 
