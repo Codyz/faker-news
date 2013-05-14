@@ -1,0 +1,23 @@
+<h1>Create User</h1>
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <h3>Email Addresses</h3>
+  <p>Enter up to three email addresses</p>
+
+  <%= f.fields_for(:emails) do |e| %>
+      <%= e.label :email, "Email" %>
+      <%= e.text_field :email %>
+      <br>
+  <%end%>
+
+  <%= f.submit "Create User"%>
+<% end %>
