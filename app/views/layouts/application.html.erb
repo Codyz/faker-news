@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hn</title>
+  <title>Faker News</title>
   <%#= stylesheet_link_tag    "application", :media => "all" %>
   <%#= javascript_include_tag "application" %>
   <%#= csrf_meta_tags %>
 </head>
 <body>
+<% if Rails.env.development? %>
+  <pre>
+    Params: <%#= params %>
+    current_user: <%#= current_user.inspect %>
+    current_user_id: <%#= current_user_id %>
+  </pre>
+<% end %>
 <%= flash[:success] || flash[:error] %>
-<%= yield %>
 
+<% if logged_in? %>
+  <%= button_to "Log Out", session_url, method: "delete" %>
+<% else%>
+  <%= button_to "Log In", new_session_url, method: "get" %>
+<% end %>
+
+<%= yield %>
 </body>
 </html>

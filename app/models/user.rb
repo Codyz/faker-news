@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_secure_password
 
   #validates :emails, numericality: {greater_than: 0}
-  validates :password, :password_confirmation, presence: true
+  validates :password, :password_confirmation, presence: true, :on => :create
+  validates :password, :password_confirmation, presence: true, :allow_nil => true, :on => :update
+
+
   validates :name, :uniqueness => true
 end

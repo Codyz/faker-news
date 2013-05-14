@@ -1,0 +1,12 @@
+<h1><%= link_to @post.title, @post.url %></h1>
+<p>Submitted By: <%= @post.user.name %></p>
+
+<h3>Submit a Comment</h3>
+<%= form_for(@comment) do |f| %>
+  <%= f.text_area :body %>
+  <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post.id %>">
+  <br>
+  <%= f.submit %>
+<% end %>
+

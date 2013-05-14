@@ -4,4 +4,8 @@ Hn::Application.routes.draw do
   end
 
   resource :session
+
+  resources :posts
+  resources :comments
+
 end

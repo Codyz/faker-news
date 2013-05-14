@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       @user.session_token = SecureRandom.hex
+      @user.send(:update)
       cookies.permanent[:session_token] = @user.session_token
 
       flash[:success] = "Logged in."
@@ -21,5 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:session_token)
+    flash[:success] = "Signed out"
+    redirect_to new_session_url
   end
 end
