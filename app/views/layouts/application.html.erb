@@ -9,9 +9,7 @@
 <body>
 <% if Rails.env.development? %>
   <pre>
-    Params: <%#= params %>
-    current_user: <%#= current_user.inspect %>
-    current_user_id: <%#= current_user_id %>
+    Params: <%= params %>
   </pre>
 <% end %>
 <%= flash[:success] || flash[:error] %>

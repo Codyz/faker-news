@@ -1,0 +1,8 @@
+<h4>Submit a Comment</h4>
+<%= form_for(comment) do |f| %>
+  <%= f.text_area :body %>
+  <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
+  <input type="hidden" name="comment[post_id]" value="<%= post.id %>">
+  <br>
+  <%= f.submit %>
+<% end %>

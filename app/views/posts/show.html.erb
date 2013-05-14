@@ -1,24 +1,16 @@
 <h2><%= link_to @post.title, @post.url %></h2>
 <p>Submitted By: <%= @post.user.name %></p>
 
-<h4>Submit a Comment</h4>
-<%= form_for(@comment) do |f| %>
-  <%= f.text_area :body %>
-  <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
-  <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
-  <br>
-  <%= f.submit %>
-<% end %>
+<%= render :partial => "post_show_form", locals: {post: @post, comment: @comment}%>
 
 <ul>
   <% @post.comments.each do |comment| %>
     <% next unless comment.comment_id.nil? %>
     <li>
-      <%= comment.user.name%> | <%= comment.created_at %> | <%= link_to "link", comment_url(comment) %>
-      <br>
-      <%= comment.body %>
-      <br>
-      <br>
+
+      <%= render :partial => "comments/comment_display", locals: {comment: comment, destination: comment_url(comment), anchor_text: "link" }%>
+
+      <br><br>
     </li>
   <% end %>
 </ul>

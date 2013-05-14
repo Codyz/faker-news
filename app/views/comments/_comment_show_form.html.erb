@@ -1,0 +1,10 @@
+<%= form_for(new_comment) do |f| %>
+  <h4>Reply to Comment</h4>
+  <br>
+  <%= f.text_area :body %>
+  <br>
+  <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
+  <input type="hidden" name="comment[post_id]" value="<%= comment.post.id %>">
+    <input type="hidden" name="comment[comment_id]" value="<%= comment.id %>">
+  <%= f.submit "Reply" %>
+<% end %>
