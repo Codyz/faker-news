@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   validates :password, :password_confirmation, presence: true, :on => :create
   validates :password, :password_confirmation, presence: true, :allow_nil => true, :on => :update
 
+  has_many :posts
+  has_many :comments
 
   validates :name, :uniqueness => true
 end

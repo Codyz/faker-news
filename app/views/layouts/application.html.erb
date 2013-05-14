@@ -16,6 +16,8 @@
 <% end %>
 <%= flash[:success] || flash[:error] %>
 
+<h1>Faker News</h1>
+
 <% if logged_in? %>
   <%= button_to "Log Out", session_url, method: "delete" %>
 <% else%>

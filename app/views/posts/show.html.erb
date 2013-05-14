@@ -1,7 +1,7 @@
-<h1><%= link_to @post.title, @post.url %></h1>
+<h2><%= link_to @post.title, @post.url %></h2>
 <p>Submitted By: <%= @post.user.name %></p>
 
-<h3>Submit a Comment</h3>
+<h4>Submit a Comment</h4>
 <%= form_for(@comment) do |f| %>
   <%= f.text_area :body %>
   <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
@@ -10,3 +10,14 @@
   <%= f.submit %>
 <% end %>
 
+<ul>
+  <% @post.comments.each do |comment| %>
+  <li>
+    <%= comment.user.name%> |  <%= link_to "link", comment_url(comment) %>
+    <br>
+    <%= comment.body %>
+    <br>
+    <br>
+  </li>
+  <% end %>
+</ul>
