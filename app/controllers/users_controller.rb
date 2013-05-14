@@ -11,6 +11,8 @@ class UsersController < ApplicationController
       flash[:success] = "User saved"
     else
       flash[:error] = "Try again"
+      @user.emails.delete_all
+      3.times { @user.emails.build }
       render :new
     end
   end
