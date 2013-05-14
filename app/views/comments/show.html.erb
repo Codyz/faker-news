@@ -1,0 +1,36 @@
+<% if @comment.comment_id %>
+  <% parent_link = comment_url(@comment.comment_id) %>
+<% else %>
+  <% parent_link = post_url(@comment.post_id) %>
+<% end %>
+
+<%= @comment.user.name %> | <%= @comment.created_at %> | <%= link_to "parent", parent_link %>
+<br>
+<%= @comment.body %>
+
+<%= form_for(@new_comment) do |f| %>
+  <h4>Reply to Comment</h4>
+  <br>
+  <%= f.text_area :body %>
+  <br>
+  <input type="hidden" name="comment[user_id]" value="<%=       current_user_id%>">
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post.id %>">
+    <input type="hidden" name="comment[comment_id]" value="<%= @comment.id %>">
+  <%= f.submit "Reply" %>
+<% end %>
+
+<ul>
+  <% @comment.comments.each do |baby_comment| %>
+  <li>
+    <% parent_link = comment_url(baby_comment.comment_id) %>
+    <%= baby_comment.user.name %> | <%= baby_comment.created_at %> | <%= link_to "parent", parent_link %>
+    <br>
+    <%= baby_comment.body %>
+    <br><br>
+  </li>
+  <% end %>
+</ul>
+
+
+
+

@@ -23,7 +23,9 @@
 <% else%>
   <%= button_to "Log In", new_session_url, method: "get" %>
 <% end %>
-
+<br><br>
 <%= yield %>
+<br><br>
+<%= link_to "Back to Main", root_url %>
 </body>
 </html>

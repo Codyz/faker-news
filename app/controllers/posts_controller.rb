@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Post saved"
+      redirect_to root_url
     else
       flash[:error] = "Try again"
       @post.comments.delete_all
@@ -23,7 +24,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.new(post_id: @post.id)
+    @comment = Comment.new
   end
 
 end

@@ -4,5 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post, :inverse_of => :comments
   belongs_to :user
 
+  has_many :comments
+  belongs_to :comment
+
   validates :body, :user_id, presence: true
 end

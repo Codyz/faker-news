@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "User saved"
+      redirect_to root_url
     else
       flash[:error] = "Try again"
       @user.emails.delete_all

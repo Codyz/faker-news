@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
       cookies.permanent[:session_token] = @user.session_token
 
       flash[:success] = "Logged in."
-      #redirect_to root_url
-      render :new
+      redirect_to root_url
     else
       flash[:error] = "Invalid email or password"
       render :new
