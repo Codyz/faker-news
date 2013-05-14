@@ -1,16 +1,12 @@
 <h2><%= link_to @post.title, @post.url %></h2>
 <p>Submitted By: <%= @post.user.name %></p>
 
+
 <%= render :partial => "post_show_form", locals: {post: @post, comment: @comment}%>
 
-<ul>
-  <% @post.comments.each do |comment| %>
-    <% next unless comment.comment_id.nil? %>
-    <li>
+<% visited = [] %>
+<%= render :partial => "comments/all_children", locals: {parent: @post, visited: []} %>
 
-      <%= render :partial => "comments/comment_display", locals: {comment: comment, destination: comment_url(comment), anchor_text: "link" }%>
 
-      <br><br>
-    </li>
-  <% end %>
-</ul>
+
+

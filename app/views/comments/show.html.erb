@@ -8,6 +8,6 @@
 
 <%= render :partial => "comment_show_form", locals: {new_comment: @new_comment, comment: @comment}%>
 
-<%= render :partial => "all_children", locals: {parent: @comment}%>
+<%= render :partial => "all_children", locals: {parent: @comment, visited: []}%>
 
 
