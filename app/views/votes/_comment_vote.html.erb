@@ -1,0 +1,6 @@
+<form action="<%= vote_url%>" method="post">
+  <input type="hidden" name="vote[comment_id]" value="<%= comment.id%>">
+  <input type="hidden" name="vote[user_id]" value="<%= current_user_id%>">
+
+  <input type="submit" name="commit" value="Upvote!">
+</form>

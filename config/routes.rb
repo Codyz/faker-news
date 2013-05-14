@@ -9,4 +9,5 @@ Hn::Application.routes.draw do
   resources :posts
   resources :comments
 
+  match '/vote' => "votes#vote"
 end

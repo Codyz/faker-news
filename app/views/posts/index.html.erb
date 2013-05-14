@@ -1,11 +1,15 @@
 <ul>
   <% @posts.each do |post| %>
+
   <li>
     <%= link_to post.title, post.url %> (<%= post.url %>)
     <br>
     Comments: <%= link_to post.comments.count, post_url(post) %>
     <br>
     Submitted by: <%= link_to post.user.name, user_url(post.user) %>
+
+    <%= render partial: "votes/post_vote", locals: {post: post}%>
   </li>
+
   <% end %>
 </ul>

@@ -2,9 +2,9 @@
 <p>Submitted By: <%= @post.user.name %></p>
 
 
+
 <%= render :partial => "post_show_form", locals: {post: @post, comment: @comment}%>
 
-<% visited = [] %>
 <%= render :partial => "comments/all_children", locals: {parent: @post, visited: []} %>
 
 
